@@ -77,10 +77,7 @@
             </a>
           </li>
            <li>
-            <!-- <a href="reports.html">
-              <span class="link-title">Reports</span>
-              <i class="mdi mdi-chart-areaspline link-icon"></i>
-            </a> -->
+           
           </li> 
           <li>
             <a style="font-size:medium;" href="question-banks.php">
@@ -185,8 +182,7 @@
             </div>
           </div>
         </div>
-        <!-- content viewport ends -->
-        <!-- partial:partials/_footer.html -->
+        
         <footer class="footer">
           <div class="row">
             <div class="col-sm-6 text-center text-sm-right order-sm-1">
@@ -202,21 +198,7 @@
         </footer>
       </div>
     </div>
-    <!-- plugins:js -->
-    <script src="../assets/vendors/js/core.js"></script>
-    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
-    <!-- endinject -->
-    <!-- Vendor Js For This Page Ends-->
-    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="../assets/js/charts/chartjs.addon.js"></script>
-    <script src="../assets/vendors/js/vendor.addons.js"></script>
-    <!-- Vendor Js For This Page Ends-->
-    <!-- build:js -->
-    <script src="../assets/js/template.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/coolors.js"></script>
-    <!-- endbuild -->
+   
 
    
   </body>
