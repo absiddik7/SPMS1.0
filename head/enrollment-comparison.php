@@ -1,4 +1,7 @@
-
+<?php
+    include '../php/middleware.php';
+    include '../php/h_enrollment.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +19,7 @@
 </head>
 
 <body class="header-fixed">
+  <!-- partial:../../partials/_header.html -->
   <nav class="t-header">
     <div class="t-header-brand-wrapper">
       <a href="index.html">
@@ -32,7 +36,9 @@
       </div>
     </div>
   </nav>
+  <!-- partial -->
   <div class="page-body">
+    <!-- partial:../../partials/_sidebar.html -->
     <div class="sidebar">
       <div class="user-profile">
         <div class="display-avatar">
@@ -75,6 +81,7 @@
         </li>
       </ul>
     </div>
+    <!-- partial -->
     <div class="page-content-wrapper">
       <div class="page-content-wrapper-inner">
         <div class="row">
@@ -131,6 +138,8 @@
           </div>
         </div>
       </div>
+      <!-- content viewport ends -->
+      <!-- partial:../../partials/_footer.html -->
       <footer class="footer">
         <div class="row">
           <div class="col-sm-6 text-center text-sm-right order-sm-1">
@@ -144,21 +153,43 @@
           </div>
         </div>
       </footer>
+      <!-- partial -->
     </div>
+    <!-- page content ends -->
   </div>
+  <!--page body ends -->
+  <!-- SCRIPT LOADING START FORM HERE /////////////-->
+  <!-- plugins:js -->
   <script src="../assets/vendors/js/core.js"></script>
   <script src="../assets/vendors/js/vendor.addons.js"></script>
   <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+  <!-- endinject -->
+  <!-- Vendor Js For This Page Ends-->
   <script src="../assets/vendors/chartjs/Chart.min.js"></script>
   <script src="../assets/js/coolors.js"></script>
+  <!-- Vendor Js For This Page Ends-->
 
   <script>
   var ctx = $('#department-enrollment');
   var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
+          labels: [
+            <?php
+              foreach($deps as $dep){
+                echo "'".strtoupper($dep['department'])."', ";
+              }
+            ?>
+          ],
           datasets: [{
               label: '# of Enrolled Students',
+              data: [
+                <?php
+                  foreach($deps as $dep){
+                    echo "".$dep['total_student'].", ";
+                  }
+                ?>
+              ],
               backgroundColor: ['#1b4f72','#82c065'],
               borderColor: ['#1b4f72','#82c065'],
               borderWidth: 1
@@ -176,9 +207,21 @@
   var myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
+          labels: [
+            <?php
+              foreach($progs as $prog){
+                echo "'".$prog['program']." in ".strtoupper($prog['department'])."', ";
+              }
+            ?>
+          ],
           datasets: [{
             label: 'My First Dataset',
             data: [
+              <?php
+                  foreach($progs as $prog){
+                    echo "".$prog['total_student'].", ";
+                  }
+                ?>
             ],
             backgroundColor: ['#ff5000','#7665c0'],
             borderColor: ['#ff5000','#7665c0'],
