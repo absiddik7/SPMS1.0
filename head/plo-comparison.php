@@ -1,4 +1,8 @@
-
+<?php
+    include '../php/middleware.php';
+    include '../php/h_dashboard.php';
+    include '../php/h_plo.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +19,7 @@
 </head>
 
 <body class="header-fixed">
+  <!-- partial:../../partials/_header.html -->
   <nav class="t-header">
     <div class="t-header-brand-wrapper">
       <a href="index.html">
@@ -31,7 +36,9 @@
       </div>
     </div>
   </nav>
+  <!-- partial -->
   <div class="page-body">
+    <!-- partial:../../partials/_sidebar.html -->
     <div class="sidebar">
       <div class="user-profile">
         <div class="display-avatar">
@@ -74,10 +81,27 @@
         </li>
       </ul>
     </div>
+    <!-- partial -->
     <div class="page-content-wrapper">
       <div class="page-content-wrapper-inner">
         <div class="content-viewport">
           <div class="row">
+               <!-- 
+            <div class="col-md-12">
+              <div class="grid">
+              
+                <div class="grid-body">
+                 
+                  <h2 class="grid-title">PLO Percentage</h2>
+                  <div class="item-wrapper">
+                      <canvas id="plo-percentage" height="200" width="100"></canvas>
+                  </div>
+                 
+                </div>
+              
+              </div>
+            </div>
+               -->
             <div class="col-lg-12 mt-5">
               <div class="grid">
                 <div class="grid-body">
@@ -135,6 +159,29 @@
                             <th>%</th>
                           </tr>
                         </thead>
+                        <tbody>
+                          <?php
+                            foreach($co_attemptedE as $k => $v){
+                              echo "<tr>
+                                    <th>CO$k</th>
+                                    <td>".$co_achievedE[$k]."</td>
+                                    <td>".round($co_achievedE[$k] / $co_attemptedE[$k] * 100, 2) ."</td>
+                                    <td>".$co_attemptedE[$k] - $co_achievedE[$k]."</td>
+                                    <td>".round(($co_attemptedE[$k] - $co_achievedE[$k]) / $co_attemptedE[$k] * 100, 2) ."</td>
+                                  </tr>";
+                            }
+                            foreach($plo_attemptedE as $k => $v){
+                              echo "<tr>
+                                    <th>PLO$k</th>
+                                    <td>".$plo_achievedE[$k]."</td>
+                                    <td>".round($plo_achievedE[$k] / $plo_attemptedE[$k] * 100, 2) ."</td>
+                                    <td>".$plo_attemptedE[$k] - $plo_achievedE[$k]."</td>
+                                    <td>".round(($plo_attemptedE[$k] - $plo_achievedE[$k]) / $plo_attemptedE[$k] * 100, 2) ."</td>
+                                  </tr>";
+                            }
+                          ?>
+                          
+                        </tbody>
                       </table>
                     </div>
                   </div>
@@ -174,7 +221,7 @@
                     <div class="d-flex justify-content-center mt-4 mb-4" <?php if(isset($_GET['name'])==true || $error != 0){echo 'hidden';} ?>>
                       <p>User must query properly to get accurate result.</p>
                     </div>
-                    <div>
+                    <div <?php if(isset($_GET['name']) == false || $error!=0){echo 'hidden';} ?>>
                       <canvas id="co-comparison" height="250"></canvas>
                     </div>
                   </div>
@@ -216,6 +263,8 @@
           </div>
         </div>
       </div>
+      <!-- content viewport ends -->
+      <!-- partial:../../partials/_footer.html -->
       <footer class="footer">
         <div class="row">
           <div class="col-sm-6 text-center text-sm-right order-sm-1">
@@ -229,8 +278,341 @@
           </div>
         </div>
       </footer>
+      <!-- partial -->
     </div>
+    <!-- page content ends -->
   </div>
+  <!--page body ends -->
+  <!-- SCRIPT LOADING START FORM HERE /////////////-->
+  <!-- plugins:js -->
+  <script src="../assets/vendors/js/core.js"></script>
+  <script src="../assets/vendors/js/vendor.addons.js"></script>
+  <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+  <!-- endinject -->
+  <!-- Vendor Js For This Page Ends-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../assets/js/coolors.js"></script>
+  <!-- Vendor Js For This Page Ends-->
+
+  <script>
+  var ctx = $('#plo-percentage');
+  var myChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+          labels: [
+            <?php
+              foreach($plo_attempted as $k => $v){
+                echo "'PLO$k',";
+              }
+            ?>
+          ],
+          datasets: [
+            {
+              label: 'Achieved',
+              data: [
+                <?php
+                  foreach($plo_attempted as $k => $v){
+                    echo (round(($plo_achieved[$k] / $plo_attempted[$k] * 100), 2)).",";
+                  }
+                ?>
+              ],
+              backgroundColor: ['#1b4f72'],
+              borderColor: ['#1b4f72'],
+              borderWidth: 1
+              
+          },
+          {
+              label: 'Failed',
+              data: [
+                <?php
+                  foreach($plo_attempted as $k => $v){
+                    echo round((($plo_attempted[$k]-$plo_achieved[$k]) / $plo_attempted[$k] * 100), 2) .",";
+                  }
+                ?>
+              ],
+              backgroundColor: ['#1b4f72'],
+              borderColor: ['#1b4f72'],
+              borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        
+      } 
+  });
+
+  var ctx = $('#plo-comparison');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [
+            <?php
+              if(isset($_GET['name'])){
+                foreach($plo_attemptedE as $k => $v){
+                  echo "'PLO$k',";
+                }
+              }              
+            ?>
+          ],
+          datasets: [
+            {
+              label: 'Achieved',
+              data: [
+                <?php
+                  if(isset($_GET['name'])){
+                    foreach($plo_attemptedE as $k => $v){
+                      echo $plo_achievedE[$k].",";
+                    }
+                  }  
+                  
+                ?>
+              ],
+              backgroundColor: ['#5D3FD3'],
+              borderColor: ['#5D3FD3'],
+              borderWidth: 1
+              
+          },
+          {
+              label: 'Failed',
+              data: [
+                <?php
+                  if(isset($_GET['name'])){
+                    foreach($plo_attemptedE as $k => $v){
+                      echo $plo_attemptedE[$k]-$plo_achievedE[$k] .",";
+                    }
+                  }                   
+                ?>
+              ],
+              backgroundColor: ['#1b4f72'],
+              borderColor: ['#1b4f72'],
+              borderWidth: 1
+          }
+        ]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      } 
+  });
+
+  var ctx = $('#co-comparison');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [
+            <?php
+              if(isset($_GET['name'])){
+                foreach($co_attemptedE as $k => $v){
+                  echo "'CO$k',";
+                }
+              }              
+            ?>
+          ],
+          datasets: [
+            {
+              label: 'Achieved',
+              data: [
+                <?php
+                  if(isset($_GET['name'])){
+                    foreach($co_attemptedE as $k => $v){
+                      echo $co_achievedE[$k].",";
+                    }
+                  }  
+                  
+                ?>
+              ],
+              backgroundColor: ['#000080'],
+              borderColor: ['#000080'],
+              borderWidth: 1
+              
+          },
+          {
+              label: 'Failed',
+              data: [
+                <?php
+                  if(isset($_GET['name'])){
+                    foreach($co_attemptedE as $k => $v){
+                      echo $co_attemptedE[$k]-$co_achievedE[$k] .",";
+                    }
+                  }                   
+                ?>
+              ],
+              backgroundColor: ['#ffa500'],
+              borderColor: ['#ffa500'],
+              borderWidth: 1
+          }
+        ]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+
+  var ctx = $('#plo-total-percentage');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [
+            <?php
+              if(isset($_GET['type']) && $_GET['type']!='course'){
+                foreach($ploData as $k=>$p){
+                  foreach($p['plo'] as $i => $d){
+                    echo "'PLO$i', ";
+                  }
+                }
+              }
+            ?>
+          ],
+          datasets: [{
+              label: <?php
+                      if(isset($_GET['type']) && $_GET['type']!='course'){
+                        foreach($ploData as $k=>$p){
+                          echo "'$k'";
+                        }
+                      }else{
+                        echo 'none';
+                      }
+                    ?>,
+              data: [
+                <?php
+                  if(isset($_GET['type']) && $_GET['type']!='course'){
+                    foreach($ploData as $k=>$p){
+                      foreach($p['plo'] as $i => $d){
+                        $prctg = round(($d['obtained'] / $d['total'] * 100), 2);
+                        echo "'$prctg', ";
+                      }
+                    }
+                  }
+                ?>
+              ],
+              backgroundColor: ['#056f66'],
+              borderColor: ['#056f66'],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+
+  var ctx = $('#dep-plo-percentage');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [
+            <?php
+              if(isset($_GET['type']) && $_GET['type']!='course'){
+                foreach($depData as $k=>$p){
+                  echo "'PLO$k', ";
+                }
+              }
+            ?>
+          ],
+          datasets: [{
+              label: <?php
+                      if(isset($_GET['type']) && $_GET['type']!='course'){
+                        echo "'".strtoupper($_SESSION['dep'])."'";
+                      }else{
+                        echo 'none';
+                      }
+                    ?>,
+              data: [
+                <?php
+                  if(isset($_GET['type']) && $_GET['type']!='course'){
+                    foreach($depData as $k=>$p){
+                        $prctg = round(($p['obtained'] / $p['total'] * 100), 2);
+                        echo "'$prctg', ";
+                    }
+                  }
+                ?>
+              ],
+              backgroundColor: ['#65afc0'],
+              borderColor: ['#65afc03'],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+
+  var ctx = $('#plo-co-percentage');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [
+            <?php
+              if(isset($_GET['type']) && $_GET['type']!='course'){
+                foreach($ploData as $k=>$p){
+                  foreach($p['plo'] as $i => $d){
+                    echo "'PLO$i', ";
+                  }
+                }
+              }
+            ?>
+          ],
+          datasets: [
+            <?php
+           
+              if(isset($_GET['type']) && $_GET['type']!='course'){
+                foreach($ploData as $b){
+                  $indx = 0;
+                  foreach($b['co'] as $c => $z){
+                      echo "{
+                                label: 'CO$c',
+                                data: [";
+                                
+                      foreach($ploData as $k=>$p){
+                        foreach($p['plo'] as $i => $d){
+                          if(array_key_exists($i, $z)){
+                            echo "$z[$i],";
+                          }else{
+                            echo "0, ";
+                          }
+                        }
+                      }
+                      echo"],
+                                backgroundColor: [
+                                  '#1b4f72','#5D3FD3','#000080','#ffa500',
+                                ]
+                            },";
+                      $indx++;
+                  }
+                }
+              }
+            ?>
+        ],
+        
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true
+          }
+        }
+      }
+  });
+  
+</script>
 </body>
 
 </html>
