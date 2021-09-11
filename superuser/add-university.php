@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="../assets/vendors/datatables/jquery.dataTables.css">
     <link rel="stylesheet" href="../assets/css/shared/style.css">
     <link rel="stylesheet" href="../assets/css/demo_1/style.css">
-    
-    <style>
+      
+  <style>
         .center {
             display: flex;
             justify-content: center;
