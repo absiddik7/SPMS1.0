@@ -1,3 +1,7 @@
+<?php
+  include '../php/middleware.php';
+  include '../php/f_question-banks.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -102,7 +106,19 @@
                         </tr>
                       </thead>
                       <tbody>
-                      
+                        <?php
+                          foreach($qstns as $qstn){
+                            echo '<tr>
+                                    <td>'.$qstn['semester'].'</td>
+                                    <td>'.strtoupper($qstn['course_id']).'</td>
+                                    <td>'.$qstn['num'].'</td>
+                                    <td>'.ucfirst($qstn['type']).'</td>
+                                    <td>'.$qstn['mark'].'</td>
+                                    <td>'.$qstn['co_number'].'</td>
+                                    <td><a href="../uploads/'.$qstn['question_content'].'" type="button" class="btn btn-success btn-xs" download>Download</a></td>
+                                  </tr>';
+                          }
+                          ?>
                       </tbody>
                     </table>
                   </div>
@@ -133,6 +149,22 @@
     <!--page body ends -->
     <!-- SCRIPT LOADING START FORM HERE /////////////-->
     <!-- plugins:js -->
-  
+    <script src="../assets/vendors/js/core.js"></script>
+    <!-- endinject -->
+    <!-- Vendor Js For This Page Ends-->
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
+    <!-- Vendor Js For This Page Ends-->
+    <!-- build:js -->
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <!-- endbuild -->
+    <script>
+      $(document).ready(function() {
+          $('#user-table').DataTable();
+      } );
+    </script>
   </body>
 </html>
