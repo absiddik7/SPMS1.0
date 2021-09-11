@@ -1,3 +1,6 @@
+<?php
+  include '../php/university.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,8 +13,8 @@
     <link rel="stylesheet" href="../assets/vendors/datatables/jquery.dataTables.css">
     <link rel="stylesheet" href="../assets/css/shared/style.css">
     <link rel="stylesheet" href="../assets/css/demo_1/style.css">
-      
-  <style>
+    
+    <style>
         .center {
             display: flex;
             justify-content: center;
@@ -170,5 +173,57 @@
       </div>
     </div>
     <!--page body ends -->
+    <!-- SCRIPT LOADING START FORM HERE /////////////-->
+    <!-- plugins:js -->
+    <script src="../assets/vendors/js/core.js"></script>
+    <!-- endinject -->
+    <!-- Vendor Js For This Page Ends-->
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
+    <!-- Vendor Js For This Page Ends-->
+    <!-- build:js -->
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <!-- endbuild -->
+    <script>
+      $plo = 1;
+      $('#next-btn').click(function(){
+        $('#part-1').attr('hidden', true);
+        $('#next-btn').attr('hidden', true);
+        $('#part-2').removeAttr('hidden');
+        $('#back-btn').removeAttr('hidden');
+        $('#sub-btn').removeAttr('hidden');
+      });
+      $('#back-btn').click(function(){
+        $('#part-2').attr('hidden', true);
+        $('#sub-btn').attr('hidden', true);
+        $('#back-btn').attr('hidden', true);
+        $('#part-1').removeAttr('hidden');
+        $('#next-btn').removeAttr('hidden');
+      });
+
+      function addPloInput(){
+        $plo++;
+        $(".plo-btn").attr('hidden', true);
+        $("#plo-box").append(`<div class="form-group row showcase_row_area">
+                            <div class="col-2 showcase_text_area">
+                              <label for="plo`+ $plo +`">PLO `+ $plo +`</label>
+                            </div>
+                            <div class="col-8 showcase_content_area">
+                              <input type="text" class="form-control" id="plo`+ $plo +`" name="plo`+ $plo +`" placeholder="Enter PLO Title">
+                            </div>
+                            <div class="col-2 showcase_content_area text-center">
+                              <button type="button" class="btn btn-outline-primary btn-rounded btn-sm plo-btn" onclick="addPloInput();">
+                                <i class="text-success mdi mdi-plus"></i>
+                              </button>
+                            </div>
+                          </div>`);
+      };
+
+    </script>
   </body>
 </html>
