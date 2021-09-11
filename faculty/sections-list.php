@@ -1,13 +1,13 @@
 <?php
   include '../php/middleware.php';
-  include '../php/f_question-banks.php';
+  include '../php/f_section.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Question Bank | Faculty</title>
+    <title>Sections List | Faculty</title>
 
     <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
     <link rel="stylesheet" href="../assets/vendors/css/vendor.addons.css">
@@ -17,7 +17,7 @@
 
   </head>
   <body class="header-fixed">
-    <!-- partial:partials/_header.html -->
+
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
         <a href="index.html">
@@ -27,7 +27,7 @@
       </div>
       <div class="t-header-content-wrapper">
         <div class="t-header-content">
-          <h4>Questions Bank</h4>
+          <h4>Section</h4>
           <button class="t-header-toggler t-header-mobile-toggler d-block d-lg-none">
             <i class="mdi mdi-menu"></i>
           </button>
@@ -43,7 +43,7 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name">Mr. Faculty</h4>
+            <h4 class="user-name"><?php echo "$faculty_name" ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -53,7 +53,7 @@
               <i class="mdi mdi-gauge link-icon"></i>
             </a>
           </li>
-          <li>
+          <li class="active">
             <a style="font-size:medium;" href="sections-list.php">
               <span class="link-title">Section</span>
               <i class="mdi mdi-book-open-variant link-icon"></i>
@@ -65,18 +65,19 @@
               <i class="mdi mdi-clipboard link-icon"></i>
             </a>
           </li>
-          <!--
+          <!-- <li>
             <a href="reports.html">
               <span class="link-title">Reports</span>
               <i class="mdi mdi-chart-areaspline link-icon"></i>
             </a>
-          </!-->
-          <li class="active">
+          </li> -->
+          <li>
             <a style="font-size:medium;" href="question-banks.php">
               <span class="link-title">Question Bank</span>
               <i class="mdi mdi-book-open-variant link-icon"></i>
             </a>
           </li>
+          
           <li>
             <a style="font-size:medium;" href="../php/login.php?logout=1">
               <span class="link-title">Logout</span>
@@ -96,29 +97,35 @@
                     <table class="table display" id="user-table">
                       <thead>
                         <tr>
+                          <th>Sl</th>
+                          <th>Section No</th>
                           <th>Semester</th>
                           <th>Course ID</th>
-                          <th>Section</th>
-                          <th>Exam Type</th>
-                          <th>Question Mark</th>
-                          <th>Assigned CO</th>
-                          <th>Question Paper</th>
+                          <th>CO Status</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
-                          foreach($qstns as $qstn){
-                            echo '<tr>
-                                    <td>'.$qstn['semester'].'</td>
-                                    <td>'.strtoupper($qstn['course_id']).'</td>
-                                    <td>'.$qstn['num'].'</td>
-                                    <td>'.ucfirst($qstn['type']).'</td>
-                                    <td>'.$qstn['mark'].'</td>
-                                    <td>'.$qstn['co_number'].'</td>
-                                    <td><a href="../uploads/'.$qstn['question_content'].'" type="button" class="btn btn-success btn-xs" download>Download</a></td>
-                                  </tr>';
+                          foreach($sections as $section){
+                            echo "<tr>
+                                    <td>".$section['id']."</td>
+                                    <td>".$section['num']."</td>
+                                    <td>".$section['semester']."</td>
+                                    <td>".$section['course_id']."</td>";
+                            if($section['co_status']==0){
+                              echo "<td>Pending</td>
+                                    <td class='actions'>
+                                      <a href='sections-setup.php?section_id=".$section['id']."'><i class='mdi mdi-lead-pencil'></i></a>
+                                    </td>";
+                            }else{
+                              echo "<td>Re-mapped</td>
+                                    <td class='actions'>
+                                      <i class='mdi mdi-check text-success'></i>
+                                    </td>";
+                            }
                           }
-                          ?>
+                        ?>
                       </tbody>
                     </table>
                   </div>

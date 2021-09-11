@@ -1,3 +1,7 @@
+<?php
+  include '../php/middleware.php';
+  include '../php/f_assessment-create.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,7 +43,7 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name">
+            <h4 class="user-name"><?php echo "$faculty_name" ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -112,7 +116,18 @@
                         </tr>
                       </thead>
                       <tbody>
-                       
+                        <?php
+                          foreach($asmnts as $asmnt){
+                            echo "<tr>
+                                    <td>".$asmnt['semester']."</td>
+                                    <td>".$asmnt['section']."</td>
+                                    <td>".strtoupper($asmnt['course_id'])."</td>
+                                    <td>".$asmnt['type']."</td>
+                                    <td>".$asmnt['total_q']."</td>
+                                    <td>".$asmnt['total_students']."</td>
+                                  </tr>";
+                          }
+                        ?>
                       </tbody>
                     </table>
                   </div>
@@ -143,6 +158,22 @@
     <!--page body ends -->
     <!-- SCRIPT LOADING START FORM HERE /////////////-->
     <!-- plugins:js -->
-  
+    <script src="../assets/vendors/js/core.js"></script>
+    <!-- endinject -->
+    <!-- Vendor Js For This Page Ends-->
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
+    <!-- Vendor Js For This Page Ends-->
+    <!-- build:js -->
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <!-- endbuild -->
+    <script>
+      $(document).ready(function() {
+          $('#user-table').DataTable();
+      } );
+    </script>
   </body>
 </html>

@@ -160,7 +160,7 @@
                             <th>%</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <!-- <tbody>
                           <?php
                             foreach($co_attemptedE as $k => $v){
                               echo "<tr>
@@ -182,7 +182,7 @@
                             }
                           ?>
                           
-                        </tbody>
+                        </tbody> -->
                       </table>
                     </div>
                   </div>
