@@ -1,3 +1,7 @@
+<?php
+    include '../php/middleware.php';
+    include '../php/s_dashboard.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -120,5 +124,132 @@
         </footer>
       </div>
     </div>
+
+    <script src="../assets/vendors/js/core.js"></script>
+    <!-- endinject -->
+    <!-- Vendor Js For This Page Ends-->
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <!-- Vendor Js For This Page Ends-->
+    <!-- build:js -->
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/coolors.js"></script>
+    <!-- endbuild -->
+    <script>
+      
+      // var ctx = $('#course-plo');
+      // var myChart = new Chart(ctx, {
+      //     type: 'bar',
+      //     data: {
+      //         labels: [
+      //           <?php
+      //             foreach($crss as $crs => $d){
+      //               echo "'".strtoupper($crs)."', ";
+      //             }
+      //           ?>
+      //         ],
+      //         datasets: [
+      //         {
+      //             label: 'Achieved',
+      //             data: [
+      //               <?php
+      //                 foreach($crss as $crs => $d){
+      //                   echo $d['ach'].", ";
+      //                 }
+      //               ?>
+      //             ],
+      //             backgroundColor: ['#65afc0'],
+      //         borderColor: ['#65afc03'],
+      //         borderWidth: 1
+      //         },
+      //         {
+      //             label: 'Failed',
+      //             data: [
+      //               <?php
+      //                 foreach($crss as $crs => $d){
+      //                   echo $d['atm'].", ";
+      //                 }
+      //               ?>
+      //             ],
+      //             backgroundColor: ['#65afc0'],
+      //             borderColor: ['#65afc03'],
+      //             borderWidth: 1
+      //         }
+      //       ]
+      //     },
+      //     options: {
+      //     scales: {
+      //         y: {
+      //             beginAtZero: true
+      //         }
+      //     }
+      // }
+      // });
+
+
+      var ctx = $('#course-plo');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [
+            <?php
+              if(isset($_GET['name'])){
+                foreach($plo_attemptedE as $k => $v){
+                  echo "'PLO$k',";
+                }
+              }              
+            ?>
+          ],
+          datasets: [
+            {
+              label: 'Achieved',
+              data: [
+                <?php
+                  if(isset($_GET['name'])){
+                    foreach($plo_attemptedE as $k => $v){
+                      echo $plo_achievedE[$k].",";
+                    }
+                  }  
+                  
+                ?>
+              ],
+              backgroundColor: ['#5D3FD3'],
+              borderColor: ['#5D3FD3'],
+              borderWidth: 1
+             
+              
+          },
+          {
+              label: 'Failed',
+              data: [
+                <?php
+                  if(isset($_GET['name'])){
+                    foreach($plo_attemptedE as $k => $v){
+                      echo $plo_attemptedE[$k]-$plo_achievedE[$k] .",";
+                    }
+                  }                   
+                ?>
+              ],
+              backgroundColor: ['#1b4f72'],
+              borderColor: ['#1b4f72'],
+              borderWidth: 1
+          }
+        ]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+
+
+    </script>
+
   </body>
 </html>
