@@ -139,57 +139,6 @@
     <script src="../assets/js/coolors.js"></script>
     <!-- endbuild -->
     <script>
-      
-      // var ctx = $('#course-plo');
-      // var myChart = new Chart(ctx, {
-      //     type: 'bar',
-      //     data: {
-      //         labels: [
-      //           <?php
-      //             foreach($crss as $crs => $d){
-      //               echo "'".strtoupper($crs)."', ";
-      //             }
-      //           ?>
-      //         ],
-      //         datasets: [
-      //         {
-      //             label: 'Achieved',
-      //             data: [
-      //               <?php
-      //                 foreach($crss as $crs => $d){
-      //                   echo $d['ach'].", ";
-      //                 }
-      //               ?>
-      //             ],
-      //             backgroundColor: ['#65afc0'],
-      //         borderColor: ['#65afc03'],
-      //         borderWidth: 1
-      //         },
-      //         {
-      //             label: 'Failed',
-      //             data: [
-      //               <?php
-      //                 foreach($crss as $crs => $d){
-      //                   echo $d['atm'].", ";
-      //                 }
-      //               ?>
-      //             ],
-      //             backgroundColor: ['#65afc0'],
-      //             borderColor: ['#65afc03'],
-      //             borderWidth: 1
-      //         }
-      //       ]
-      //     },
-      //     options: {
-      //     scales: {
-      //         y: {
-      //             beginAtZero: true
-      //         }
-      //     }
-      // }
-      // });
-
-
       var ctx = $('#course-plo');
   var myChart = new Chart(ctx, {
       type: 'bar',
