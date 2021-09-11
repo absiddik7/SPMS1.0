@@ -1,3 +1,7 @@
+<?php
+  include '../php/middleware.php';
+  include '../php/f_assessment-create.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,7 +43,7 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name">
+            <h4 class="user-name"><?php echo "$faculty_name" ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -99,7 +103,11 @@
                             </div>
                             <div class="col-md-9 showcase_content_area">
                               <select class="custom-select" name="section_id">
-                                
+                                <?php
+                                  foreach($sctns as $sctn){
+                                    echo "<option value='".$sctn['id']."'>".$sctn['num']." - ".strtoupper($sctn['course_id'])." - ".$sctn['semester']."</option>";
+                                  }
+                                ?>
                               </select>
                             </div>
                           </div>
@@ -227,6 +235,101 @@
       </div>
       <!-- page content ends -->
     </div>
-  
+    <!--page body ends -->
+    <!-- SCRIPT LOADING START FORM HERE /////////////-->
+    <!-- plugins:js -->
+    <script src="../assets/vendors/js/core.js"></script>
+    <!-- endinject -->
+    <!-- Vendor Js For This Page Ends-->
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
+    <!-- Vendor Js For This Page Ends-->
+    <!-- build:js -->
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <!-- endbuild -->
+    <script>
+      $part = 1;
+      $set=0;
+
+      function goNext(){
+        if($part==3){
+          $("#asev-form").submit();
+        }else{
+          $part++;
+          if($part==2){
+            $("#bck-btn").removeAttr('hidden');
+            $("#part1").attr('hidden', 'true');
+            if($set==0){
+              genAsmnt();
+            }
+            $("#part2").removeAttr('hidden');
+          }else{
+            $("#nxt-btn").html("Submit");
+            $("#part2").attr('hidden', 'true');
+            $("#part3").removeAttr('hidden');
+          }
+        }
+      }
+
+      function goBack(){
+        $part--;
+        if($part==1){
+          $("#bck-btn").attr('hidden', 'true');
+          $("#part2").attr('hidden', 'true');
+          $("#part1").removeAttr('hidden')
+        }else if($part==2){
+          $("#nxt-btn").html("Next");
+          $("#part3").attr('hidden', 'true');
+          $("#part2").removeAttr('hidden');
+        }
+      }
+
+      function genAsmnt(){
+        $set = 1;
+        $("#part2").empty();
+        $total_q = $("#total_q").val();
+        console.log($total_q);
+        for($i=1; $i<=$total_q; $i++){
+          $("#part2").append(`
+                        <div class="col-md-10 mx-auto">
+                          <div class="form-group row showcase_row_area">
+                            <div class="col-md-2 showcase_text_area">
+                              <label for="mark`+$i+`">Mark in Question `+$i+`</label>
+                            </div>
+                            <div class="col-md-4 showcase_content_area">
+                              <input type="text" class="form-control" id="mark`+$i+`" name="mark`+$i+`" placeholder="Enter Question`+$i+` Mark">
+                            </div>
+                            <div class="col-md-2 showcase_text_area">
+                              <label for="co`+$i+`">CO in Question `+$i+`</label>
+                            </div>
+                            <div class="col-md-4 showcase_content_area">
+                              <input type="text" class="form-control" id="co`+$i+`" name="co`+$i+`" placeholder="Assigned CO in Question`+$i+`">
+                            </div>
+                          </div>
+                          <div class="row showcase_row_area mb-4">
+                            <div class="col-md-3 showcase_text_area">
+                              <label>Upload Question Content<span style="color: red;">*</span></label>
+                            </div>
+                            <div class="col-md-9 showcase_content_area">
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="qc`+$i+`" name="qc`+$i+`">
+                                <label class="custom-file-label" for="qc`+$i+`">Choose file</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+          `);
+        }
+      }
+
+      $("#total_q").change(function(){
+        $set=0;
+      });
+
+
+    </script>
   </body>
 </html>
