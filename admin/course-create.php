@@ -1,3 +1,7 @@
+<?php
+  include '../php/middleware.php';
+  include '../php/course.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +18,6 @@
 
   </head>
   <body class="header-fixed">
-    <!-- partial:partials/_header.html -->
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
         <a href="index.html">
@@ -31,16 +34,14 @@
         </div>
       </div>
     </nav>
-    <!-- partial -->
     <div class="page-body">
-      <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar">
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name"></h4>
+            <h4 class="user-name"><?php echo $_SESSION["name"]; ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -94,7 +95,6 @@
           </li>
         </ul>
       </div>
-      <!-- partial -->
       <div class="page-content-wrapper">
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
@@ -111,7 +111,11 @@
                             </div>
                             <div class="col-md-9 showcase_content_area">
                               <select class="custom-select" name="program">
-                                
+                                <?php
+                                  foreach($programs as $program){
+                                    echo "<option value='".$program['id']."' selected>".$program['name']." in ".$program['department']."</option>";
+                                  }
+                                ?>
                               </select>
                             </div>
                           </div>
@@ -207,9 +211,203 @@
             </div>
           </div>
         </footer>
-        <!-- partial -->
       </div>
-      <!-- page content ends -->
     </div>
+
+    <script src="../assets/vendors/js/core.js"></script>
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+
+    <script>
+      $part = 1;
+      $plo = 13;
+
+      $('#next-btn').click(function(){
+        $('#back-btn').removeAttr('hidden');
+        $('#part-'+$part).attr('hidden', true);
+        $part++;
+        $('#part-'+$part).removeAttr('hidden');
+        if($part==2){
+          $("#co-box").empty();
+          $total_co = $("#total_co").val();
+          addCoInput();
+        }
+        if($part==3){
+          $('#next-btn').attr('hidden', true);
+          $('#sub-btn').removeAttr('hidden');
+        }
+        
+      });
+      $('#back-btn').click(function(){
+        $('#sub-btn').attr('hidden', true);
+        $('#next-btn').removeAttr('hidden');
+        $('#part-'+$part).attr('hidden', true);
+        $part--;
+        $('#part-'+$part).removeAttr('hidden');
+        if($part==1){
+          $('#back-btn').attr('hidden', true);
+        }
+      });
+
+      $lvlmap = new Array();
+      for($i=0; $i<=4; $i++){
+        $lvlmap[$i]= new Array();
+        for($j=0; $j<=4; $j++){
+          $lvlmap[$i][$j] = new Array();
+        }
+      }
+      $lvlmap[0][0]= [1, 1];
+      $lvlmap[0][1]= [1, 2];
+      $lvlmap[0][2]= [2, 1];
+      $lvlmap[0][3]= [3, 2];
+
+      $lvlmap[1][0]= [1, 1];
+      $lvlmap[1][1]= [1, 3];
+      $lvlmap[1][2]= [2, 2];
+      $lvlmap[1][3]= [1, 2];
+
+      $lvlmap[2][0]= [3, 4];
+      $lvlmap[2][1]= [1, 5];
+      $lvlmap[2][2]= [3, 6];
+      $lvlmap[2][3]= [2, 1];
+
+      $lvlmap[3][0]= [1, 5];
+      $lvlmap[3][1]= [1, 6];
+      $lvlmap[3][2]= [1, 3];
+      $lvlmap[3][3]= [2, 2];
+
+      console.log($lvlmap[0][1][1]);
+
+
+      function addCoInput(){
+        $total_co = $("#total_co").val();
+        for($co=1; $co<=$total_co; $co++){
+          $("#co-box").append(`<div class="form-group row showcase_row_area">
+                            <div class="col-2 showcase_text_area">
+                              <label>CO`+ $co +`</label>
+                            </div>
+                            <div class="col-10">
+                              <div class="row">
+                                <div class="col-6 col-md-6">
+                                  <div class="form-group row showcase_row_area">
+                                    <div class="col-md-3 showcase_text_area">
+                                      <label>Domain</label>
+                                    </div>
+                                    <div class="col-md-9 showcase_content_area">
+                                      <select class="custom-select" id="domain`+ $co +`" name="domain`+ $co +`" onchange="changeListener(event);">
+                                        <option value="1" selected>Cognitive</option>
+                                        <option value="2">Affective</option>
+                                        <option value="3">Psychomotor</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6 col-md-6">
+                                  <div class="form-group row showcase_row_area">
+                                    <div class="col-md-3 showcase_text_area">
+                                      <label>Level</label>
+                                    </div>
+                                    <div class="col-md-9 showcase_content_area">
+                                      <select class="custom-select" id="level`+ $co +`" name="level`+ $co +`" onchange="changeListener(event);">
+                                        <option value="1" selected>1- Remember</option>
+                                        <option value="2">2- Understand</option>
+                                        <option value="3">3- Apply</option>
+                                        <option value="4">4- Analyze</option>
+                                        <option value="5">5- Evaluate</option>
+                                        <option value="6">6- Create</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>  
+                          </div>`);
+        
+          $("#view-header").append(`<th>CO`+$co+`</th>`);        
+          for($i =1; $i<=$plo; $i++){
+            $("#mapper-"+$i).append(`<td><input type="checkbox" class="form-check-input" name="plo-`+$i+`[]" id="co-`+$i+`-`+$co+`" value="`+$co+`"></td>`);
+          } 
+          $level = $("#level").val() / 100;
+          if($co<=4){
+            $("#domain"+$co).each(function(){
+              $(this).find('option[value='+$lvlmap[$level-1][$co-1][0]+']').prop('selected', true);
+            });
+            $("#level"+$co).each(function(){
+              $(this).find('option[value='+$lvlmap[$level-1][$co-1][1]+']').prop('selected', true);
+            });
+          }
+          setCo($co);
+        }
+      };
+
+      $( document ).ready(function() {
+        for($i=1; $i<=$plo; $i++){
+          $("#view-body").append(`<tr id="mapper-`+$i+`">
+                                  <td>PLO`+$i+`</td>
+                                </tr>`);
+        }  
+      });
+
+      function changeListener(event){
+        $sl = (event.target.name).slice(-1);
+        clearCo($sl);
+        setCo($sl);
+      }
+
+      function clearCo($id){
+        for($i=1; $i<=$plo; $i++){
+          $("#co-"+$i+"-"+$id).prop("checked", false);
+        } 
+      }
+
+      $aumap = new Array();
+
+      for($i=0; $i<3; $i++){
+        $aumap[$i]= new Array();
+        for($j=0; $j<5; $j++){
+          $aumap[$i][$j] = new Array();
+        }
+      }
+
+      $aumap[0][0] = [1,2];
+      $aumap[0][1] = [1,2,3,7];
+      $aumap[0][2] = [3,4,5,6,7,12];
+      $aumap[0][3] = [2,3,5,7,8,13];
+      $aumap[0][4] = [1,2,5,7,11,13];
+      $aumap[0][5] = [1,3,4,5,6,7,13];
+      
+      $aumap[1][0] = [1,2];
+      $aumap[1][1] = [1,2,3,7,11];
+      $aumap[1][2] = [3,4,5,6,7,10,11,12,13];
+      $aumap[1][3] = [2,3,5,7,8,10,11,12,13];
+      $aumap[1][4] = [1,2,5,7,11,13];
+      $aumap[1][5] = [3,4,5,6,7,8,9];
+      
+      $aumap[2][0] = [1,2];
+      $aumap[2][1] = [1,2,3,7,10];
+      $aumap[2][2] = [3,4,5,6,7,10,12];
+      $aumap[2][3] = [2,3,5,7,8,11,13];
+      $aumap[2][4] = [1,2,5,7,11,13];
+      $aumap[2][5] = [1,3,4,5,6,7,8,9,10,13];
+
+      
+      function setCo($co){
+        $dm = $('select[name="domain'+$co+'"] option:selected').val();
+        $lv = $('select[name="level'+$co+'"] option:selected').val();
+        for($i=0; $i<$aumap[$dm-1][$lv-1].length; $i++){
+          $p = $aumap[$dm-1][$lv-1][$i];
+          $("#co-"+$p+"-"+$co).prop("checked", true);
+        }
+        console.log($dm);
+      }
+
+    </script>
+    
   </body>
 </html>

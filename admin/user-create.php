@@ -1,3 +1,8 @@
+<?php
+  include '../php/middleware.php';
+  include '../php/user.php';
+  include '../php/a_dashboard.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,7 +50,7 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name"></h4>
+            <h4 class="user-name"><?php echo "$admin_name" ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -159,7 +164,11 @@
                             </div>
                             <div class="col-md-9 showcase_content_area">
                               <select class="custom-select" name="program">
-                               
+                                <?php
+                                  foreach($programs as $program){
+                                    echo "<option value='".$program['id']."'>".$program['name']." in ".$program['department']."</option>";
+                                  }
+                                ?>
                               </select>
                             </div>
                           </div>
@@ -169,7 +178,11 @@
                             </div>
                             <div class="col-md-9 showcase_content_area">
                               <select class="custom-select" name="department">
-                                
+                                <?php
+                                  foreach($departments as $department){
+                                    echo "<option value='".$department['id']."'>".$department['name']."</option>";
+                                  }
+                                ?>
                               </select>
                             </div>
                           </div>
@@ -200,5 +213,36 @@
         </footer>
       </div>
     </div>
+
+    <script src="../assets/vendors/js/core.js"></script>
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#user-table').DataTable();
+      } );
+
+      function roleChanger(){
+        $user = $("select[name=user]").val();
+        if($user == 'student'){
+          $("#program-select").removeAttr('hidden');
+          $("#department-select").attr('hidden', 'true');
+        }else if($user =='faculty'){
+          $("#department-select").removeAttr('hidden');
+          $("#program-select").attr('hidden', 'true');
+        }else{
+          $("#department-select").attr('hidden', 'true');
+          $("#program-select").attr('hidden', 'true');
+        }
+      }
+
+    </script>
+
   </body>
 </html>

@@ -1,3 +1,8 @@
+<?php
+  include '../php/middleware.php';
+  include '../php/course.php';
+  include '../php/a_dashboard.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +41,7 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name"></h4>
+            <h4 class="user-name"><?php echo "$admin_name" ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -117,6 +122,24 @@
                           <th>Total CO</th>
                         </tr>
                       </thead>
+                      <tbody>
+                        <?php
+                          foreach($courses as $course){
+                            echo"
+                            <tr>
+                              <td>".$course['id']."</td>
+                              <td>".$course['name']."</td>
+                              <td>".$course['program']." ".$course['department']."</td>
+                              <td>".$course['level']."</td>
+                              <td>".$course['credits']."</td>
+                              <td>".$course['total_co']."</td>
+                            </tr>
+                            ";
+                          }
+                        ?>
+                        
+                        <tr>
+                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -133,11 +156,30 @@
               </ul>
             </div>
             <div class="col-sm-6 text-center text-sm-left mt-3 mt-sm-0">
-              <small class="text-muted d-block">Copyright © 2021 <a href="#" >Coder Buddies</a>. All rights reserved</small>
+              <small class="text-muted d-block">Copyright © 2021 <a href="#" >G4</a>. All rights reserved</small>
+              <small class="text-gray mt-2">Handcrafted With <i class="mdi mdi-heart text-danger"></i></small>
             </div>
           </div>
         </footer>
       </div>
     </div>
+
+    <script src="../assets/vendors/js/core.js"></script>
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
+
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+
+    <script>
+      $(document).ready(function() {
+          $('#user-table').DataTable();
+      } );
+    </script>
+    
   </body>
 </html>
