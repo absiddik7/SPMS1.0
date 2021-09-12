@@ -1,3 +1,8 @@
+<?php
+    include '../php/middleware.php';
+    include '../php/h_dashboard.php';
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +18,7 @@
 
   </head>
   <body class="header-fixed">
+    <!-- partial:partials/_header.html -->
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
         <a href="index.html">
@@ -29,7 +35,9 @@
         </div>
       </div>
     </nav>
+    <!-- partial -->
     <div class="page-body">
+      <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar">
@@ -51,7 +59,7 @@
               </div>
             </div>
             <div class="col-md-4 text-left">
-              <label for="inputType14">Dean</label>
+              <label for="inputType14">Head</label>
             </div>
           </div>
         </div>
@@ -88,6 +96,7 @@
           </li>
         </ul>
       </div>
+      <!-- partial -->
       <div class="page-content-wrapper">
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
@@ -98,7 +107,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                        <p class="card-title"></p>
+                        <p class="card-title"><?php echo $stds; ?></p>
                         </div>
                         <h5 class="text-black">Enrolled Student</h5>
                       </div>
@@ -115,7 +124,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                        <p class="card-title"></p>
+                        <p class="card-title"><?php echo $progs; ?></p>
                         </div>
                         <h5 class="text-black">Total Program</h5>
                       </div>
@@ -132,7 +141,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                        <p class="card-title"></p>
+                        <p class="card-title"><?php echo $crss; ?></p>
                         </div>
                         <h5 class="text-black">Total Courses</h5>
                       </div>
@@ -146,6 +155,8 @@
             </div>
           </div>
         </div>
+        <!-- content viewport ends -->
+        <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="row">
             <div class="col-sm-6 text-center text-sm-right order-sm-1">
@@ -159,15 +170,25 @@
             </div>
           </div>
         </footer>
+        <!-- partial -->
       </div>
+      <!-- page content ends -->
     </div>
+    <!--page body ends -->
+    <!-- SCRIPT LOADING START FORM HERE /////////////-->
+    <!-- plugins:js -->
     <script src="../assets/vendors/js/core.js"></script>
+    <!-- endinject -->
+    <!-- Vendor Js For This Page Ends-->
     <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
     <script src="../assets/vendors/chartjs/Chart.min.js"></script>
     <script src="../assets/js/charts/chartjs.addon.js"></script>
     <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <!-- Vendor Js For This Page Ends-->
+    <!-- build:js -->
     <script src="../assets/js/template.js"></script>
     <script src="../assets/js/dashboard.js"></script>
+    <!-- endbuild -->
     <script>
       $("#role-switch").change(function(){
         window.location.href = "../faculty/dashboard.php";
