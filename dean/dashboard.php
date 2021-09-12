@@ -50,7 +50,7 @@
             ?>
             
           </div>
-          <div class="row showcase_row_area mt-4">
+          <!-- <div class="row showcase_row_area mt-4">
             <div class="col-md-4 text-right">
               <label for="inputType14">Faculty</label>
             </div>
@@ -65,7 +65,7 @@
             <div class="col-md-4 text-left">
               <label for="inputType14">Dean</label>
             </div>
-          </div>
+          </div> -->
         </div>
         <ul class="navigation-menu">
           <li class="active">

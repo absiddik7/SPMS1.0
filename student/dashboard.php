@@ -16,7 +16,6 @@
 
   </head>
   <body class="header-fixed">
-    <!-- partial:partials/_header.html -->
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
         <a href="index.html">
@@ -33,9 +32,7 @@
         </div>
       </div>
     </nav>
-    <!-- partial -->
     <div class="page-body">
-      <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar">
@@ -62,7 +59,6 @@
           </li>
         </ul>
       </div>
-      <!-- partial -->
       <div class="page-content-wrapper">
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
@@ -126,18 +122,13 @@
     </div>
 
     <script src="../assets/vendors/js/core.js"></script>
-    <!-- endinject -->
-    <!-- Vendor Js For This Page Ends-->
     <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
     <script src="../assets/vendors/chartjs/Chart.min.js"></script>
     <script src="../assets/js/charts/chartjs.addon.js"></script>
     <script src="../assets/vendors/js/vendor.addons.js"></script>
-    <!-- Vendor Js For This Page Ends-->
-    <!-- build:js -->
     <script src="../assets/js/template.js"></script>
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/coolors.js"></script>
-    <!-- endbuild -->
     <script>
       var ctx = $('#course-plo');
   var myChart = new Chart(ctx, {
