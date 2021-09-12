@@ -1,3 +1,8 @@
+<?php
+  include '../php/middleware.php';
+  include '../php/a_dashboard.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +40,7 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name">
+            <h4 class="user-name"><?php echo "$admin_name" ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -99,7 +104,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                          <p class="card-title"></p>
+                          <p class="card-title"><?php echo $stds; ?></p>
                         </div>
                         <h5 class="text-black">Total Students</h5>
                       </div>
@@ -116,7 +121,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                          <p class="card-title"></p>
+                          <p class="card-title"><?php echo $scls;?></p>
                         </div>
                         <h5 class="text-black">Total Schools</h5>
                       </div>
@@ -133,7 +138,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                          <p class="card-title"></p>
+                          <p class="card-title"><?php echo $progs; ?></p>
                         </div>
                         <h5 class="text-black">Total Programs</h5>
                       </div>
@@ -150,7 +155,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                          <p class="card-title"></p>
+                          <p class="card-title"><?php echo $crss; ?></p>
                         </div>
                         <h5 class="text-black">Total Courses</h5>
                       </div>
@@ -179,5 +184,14 @@
         </footer>
       </div>
     </div>
+
+    <script src="../assets/vendors/js/core.js"></script>
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+
   </body>
 </html>

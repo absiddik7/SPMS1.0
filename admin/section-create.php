@@ -1,3 +1,8 @@
+<?php
+  include '../php/middleware.php';
+  include '../php/section.php';
+  include '../php/a_dashboard.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,7 +49,7 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name"></h4>
+            <h4 class="user-name"><?php echo "$admin_name" ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -130,6 +135,11 @@
                             </div>
                             <div class="col-md-9 showcase_content_area">
                               <select class="custom-select" name="course">
+                                <?php
+                                  foreach($courses as $course){
+                                    echo "<option value='".$course['id']."'>".$course['name']."</option>";
+                                  }
+                                ?>
                               </select>
                             </div>
                           </div>
@@ -139,6 +149,11 @@
                             </div>
                             <div class="col-md-9 showcase_content_area">
                               <select class="custom-select" name="faculty">
+                                <?php
+                                  foreach($faculties as $faculty){
+                                    echo "<option value='".$faculty['id']."'>".$faculty['name']."</option>";
+                                  }
+                                ?>
                               </select>
                             </div>
                           </div>
@@ -183,5 +198,16 @@
         </footer>
       </div>
     </div>
+
+    <script src="../assets/vendors/js/core.js"></script>
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+   
   </body>
 </html>
