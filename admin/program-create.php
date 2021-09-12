@@ -1,3 +1,7 @@
+<?php
+  include '../php/middleware.php';
+  include '../php/program.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +17,7 @@
 
   </head>
   <body class="header-fixed">
+    <!-- partial:partials/_header.html -->
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
         <a href="index.html">
@@ -29,14 +34,16 @@
         </div>
       </div>
     </nav>
+    <!-- partial -->
     <div class="page-body">
+      <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar">
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name"></h4>
+            <h4 class="user-name"><?php echo $_SESSION["name"]; ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -90,6 +97,7 @@
           </li>
         </ul>
       </div>
+      <!-- partial -->
       <div class="page-content-wrapper">
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
@@ -106,6 +114,11 @@
                             </div>
                             <div class="col-md-9 showcase_content_area">
                               <select class="custom-select" name="department">
+                                <?php
+                                  foreach($departments as $department){
+                                    echo "<option value='".$department['id']."' selected>".$department['name']."</option>";
+                                  }
+                                ?>
                               </select>
                             </div>
                           </div>
@@ -171,5 +184,54 @@
         </footer>
       </div>
     </div>
+    <!-- plugins:js -->
+    <script src="../assets/vendors/js/core.js"></script>
+    <!-- endinject -->
+    <!-- Vendor Js For This Page Ends-->
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/vendors/js/vendor.addons.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
+    <!-- Vendor Js For This Page Ends-->
+    <!-- build:js -->
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <!-- endbuild -->
+    <script>
+      $('#next-btn').click(function(){
+        generatePLO();
+        $('#part-1').attr('hidden', true);
+        $('#next-btn').attr('hidden', true);
+        $('#part-2').removeAttr('hidden');
+        $('#back-btn').removeAttr('hidden');
+        $('#sub-btn').removeAttr('hidden');
+      });
+      $('#back-btn').click(function(){
+        $('#part-2').attr('hidden', true);
+        $('#sub-btn').attr('hidden', true);
+        $('#back-btn').attr('hidden', true);
+        $('#part-1').removeAttr('hidden');
+        $('#next-btn').removeAttr('hidden');
+      });
+
+      function generatePLO(){
+        $("#plo-box").empty();
+        $plo = $("#total_plo").val();
+        for($i=1; $i<=$plo; $i++){
+          $("#plo-box").append(`<div class="form-group row showcase_row_area">
+                            <div class="col-2 showcase_text_area">
+                              <label for="plo`+ $i +`">PLO `+ $i +`</label>
+                            </div>
+                            <div class="col-10 showcase_content_area">
+                              <input type="text" class="form-control" id="plo`+ $i +`" name="plo`+ $i +`" placeholder="Enter PLO Title">
+                            </div>
+                          </div>`);
+        }
+      }
+
+
+    </script>
   </body>
 </html>
