@@ -48,7 +48,7 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-          <h4 class="user-name"><?php echo $_SESSION["name"]; ?></h4>
+          <h4 class="user-name"><?php echo "$admin_name"?></h4>
           </div>
         </div>
         <ul class="navigation-menu">

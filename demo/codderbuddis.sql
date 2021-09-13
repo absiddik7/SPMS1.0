@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2021 at 07:56 PM
+-- Generation Time: Sep 13, 2021 at 07:28 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -109,7 +109,10 @@ INSERT INTO `assessment` (`id`, `question_number`, `question_content`, `type`, `
 (43, 3, NULL, 'mid', 10, NULL, 3, 6),
 (52, 1, NULL, 'mid', 10, NULL, 2, 7),
 (53, 2, NULL, 'mid', 10, NULL, 3, 7),
-(54, 3, NULL, 'mid', 10, NULL, 2, 7);
+(54, 3, NULL, 'mid', 10, NULL, 2, 7),
+(55, 1, NULL, 'mid', 10, NULL, 1, 10),
+(56, 2, NULL, 'mid', 10, NULL, 2, 10),
+(57, 3, NULL, 'mid', 10, NULL, 4, 10);
 
 -- --------------------------------------------------------
 
@@ -294,7 +297,7 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`id`, `name`, `head`, `head_id`, `school_id`) VALUES
-('cse', 'Computer Science & Engineering', 'Ashraful Islam', NULL, 1),
+('cse', 'Computer Science & Engineering', 'Alamin Islam', NULL, 1),
 ('env', 'Environmental Science And Management Life Sciences', 'Fahad', NULL, 3),
 ('hrm', 'Human Resource Management', 'Mamun Ahmed', NULL, 2);
 
@@ -574,7 +577,34 @@ INSERT INTO `enrollment` (`id`, `student_id`, `section_id`) VALUES
 (257, 1892367, 9),
 (258, 1872128, 9),
 (259, 1868128, 9),
-(260, 1845457, 9);
+(260, 1845457, 9),
+(261, 1416455, 10),
+(262, 1579288, 10),
+(263, 1625654, 10),
+(264, 1665555, 10),
+(265, 1613273, 10),
+(266, 1623112, 10),
+(267, 1696326, 10),
+(268, 1646434, 10),
+(269, 1614142, 10),
+(270, 1654432, 10),
+(271, 1661638, 10),
+(272, 1686272, 10),
+(273, 1778274, 10),
+(274, 1795656, 10),
+(275, 1747457, 10),
+(276, 1798883, 10),
+(277, 1766156, 10),
+(278, 1715578, 10),
+(279, 1745484, 10),
+(280, 1788337, 10),
+(281, 1728439, 10),
+(282, 1711619, 10),
+(283, 1711729, 10),
+(284, 1892367, 10),
+(285, 1872128, 10),
+(286, 1868128, 10),
+(287, 1845457, 10);
 
 -- --------------------------------------------------------
 
@@ -1736,7 +1766,88 @@ INSERT INTO `evaluation` (`id`, `enrollment_id`, `assessment_id`, `obtained_mark
 (1139, 86, 25, 0, NULL),
 (1140, 82, 23, 10, NULL),
 (1141, 82, 24, 18, NULL),
-(1142, 82, 25, 0, NULL);
+(1142, 82, 25, 0, NULL),
+(1143, 261, 55, 15, NULL),
+(1144, 261, 56, 0, NULL),
+(1145, 261, 57, 5, NULL),
+(1146, 262, 55, 0, NULL),
+(1147, 262, 56, 0, NULL),
+(1148, 262, 57, 18, NULL),
+(1149, 265, 55, 0, NULL),
+(1150, 265, 56, 0, NULL),
+(1151, 265, 57, 0, NULL),
+(1152, 269, 55, 0, NULL),
+(1153, 269, 56, 0, NULL),
+(1154, 269, 57, 10, NULL),
+(1155, 266, 55, 0, NULL),
+(1156, 266, 56, 0, NULL),
+(1157, 266, 57, 15, NULL),
+(1158, 263, 55, 5, NULL),
+(1159, 263, 56, 15, NULL),
+(1160, 263, 57, 20, NULL),
+(1161, 268, 55, 0, NULL),
+(1162, 268, 56, 0, NULL),
+(1163, 268, 57, 0, NULL),
+(1164, 270, 55, 18, NULL),
+(1165, 270, 56, 0, NULL),
+(1166, 270, 57, 20, NULL),
+(1167, 271, 55, 15, NULL),
+(1168, 271, 56, 5, NULL),
+(1169, 271, 57, 10, NULL),
+(1170, 264, 55, 10, NULL),
+(1171, 264, 56, 0, NULL),
+(1172, 264, 57, 15, NULL),
+(1173, 272, 55, 0, NULL),
+(1174, 272, 56, 0, NULL),
+(1175, 272, 57, 0, NULL),
+(1176, 267, 55, 0, NULL),
+(1177, 267, 56, 0, NULL),
+(1178, 267, 57, 10, NULL),
+(1179, 282, 55, 5, NULL),
+(1180, 282, 56, 5, NULL),
+(1181, 282, 57, 22, NULL),
+(1182, 283, 55, 0, NULL),
+(1183, 283, 56, 0, NULL),
+(1184, 283, 57, 0, NULL),
+(1185, 278, 55, 0, NULL),
+(1186, 278, 56, 10, NULL),
+(1187, 278, 57, 10, NULL),
+(1188, 281, 55, 0, NULL),
+(1189, 281, 56, 0, NULL),
+(1190, 281, 57, 24, NULL),
+(1191, 279, 55, 0, NULL),
+(1192, 279, 56, 7, NULL),
+(1193, 279, 57, 0, NULL),
+(1194, 275, 55, 0, NULL),
+(1195, 275, 56, 0, NULL),
+(1196, 275, 57, 0, NULL),
+(1197, 277, 55, 14, NULL),
+(1198, 277, 56, 0, NULL),
+(1199, 277, 57, 20, NULL),
+(1200, 273, 55, 0, NULL),
+(1201, 273, 56, 7, NULL),
+(1202, 273, 57, 15, NULL),
+(1203, 280, 55, 18, NULL),
+(1204, 280, 56, 18, NULL),
+(1205, 280, 57, 24, NULL),
+(1206, 274, 55, 10, NULL),
+(1207, 274, 56, 3, NULL),
+(1208, 274, 57, 20, NULL),
+(1209, 276, 55, 5, NULL),
+(1210, 276, 56, 0, NULL),
+(1211, 276, 57, 15, NULL),
+(1212, 287, 55, 0, NULL),
+(1213, 287, 56, 0, NULL),
+(1214, 287, 57, 20, NULL),
+(1215, 286, 55, 15, NULL),
+(1216, 286, 56, 15, NULL),
+(1217, 286, 57, 24, NULL),
+(1218, 285, 55, 0, NULL),
+(1219, 285, 56, 0, NULL),
+(1220, 285, 57, 22, NULL),
+(1221, 284, 55, 0, NULL),
+(1222, 284, 56, 0, NULL),
+(1223, 284, 57, 24, NULL);
 
 -- --------------------------------------------------------
 
@@ -1758,6 +1869,7 @@ CREATE TABLE `faculty` (
 
 INSERT INTO `faculty` (`id`, `name`, `email`, `password`, `department_id`) VALUES
 (3214, 'Tamim Iqbal', 'tamim@iub.edu.bd', '12345678', 'hrm'),
+(3454, 'Alamin Islam', 'alamin@iub.edu.bd', '12345678', 'cse'),
 (5467, 'Rafiq Islam', 'rafiq@iub.edu.bd', '12345678', 'env'),
 (5674, 'Bulbul  Ahmed', 'bulbul@iub.edu.bd', '12345678', 'hrm'),
 (111111, 'Mahbubul Islam', 'mahbubul@iub.edu.bd', '12345678', 'cse'),
@@ -1894,7 +2006,8 @@ INSERT INTO `section` (`id`, `num`, `semester`, `course_id`, `faculty_id`) VALUE
 (6, 'C', 'Summer-2021', 'env101', 5467),
 (7, 'C', 'Summer-2021', 'cse101', 222222),
 (8, 'A', 'Summer-2021', 'env101', 5467),
-(9, 'A', 'Summer-2021', 'hrm401', 3214);
+(9, 'A', 'Summer-2021', 'hrm401', 3214),
+(10, 'A', 'Summer-2021', 'cse-303', 3454);
 
 -- --------------------------------------------------------
 
@@ -2151,7 +2264,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `assessment`
 --
 ALTER TABLE `assessment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `co`
@@ -2163,13 +2276,13 @@ ALTER TABLE `co`
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
 
 --
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1143;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1224;
 
 --
 -- AUTO_INCREMENT for table `plo`
@@ -2193,7 +2306,7 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

@@ -17,7 +17,6 @@
 
   </head>
   <body class="header-fixed">
-    <!-- partial:partials/_header.html -->
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
         <a href="index.html">
@@ -34,16 +33,14 @@
         </div>
       </div>
     </nav>
-    <!-- partial -->
     <div class="page-body">
-      <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar">
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name"><?php echo $_SESSION["name"]; ?></h4>
+            <h4 class="user-name"><?php echo "$admin_name" ?></h4>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -97,7 +94,6 @@
           </li>
         </ul>
       </div>
-      <!-- partial -->
       <div class="page-content-wrapper">
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
@@ -184,21 +180,17 @@
         </footer>
       </div>
     </div>
-    <!-- plugins:js -->
+
     <script src="../assets/vendors/js/core.js"></script>
-    <!-- endinject -->
-    <!-- Vendor Js For This Page Ends-->
     <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
     <script src="../assets/vendors/chartjs/Chart.min.js"></script>
     <script src="../assets/js/charts/chartjs.addon.js"></script>
     <script src="../assets/vendors/js/vendor.addons.js"></script>
     <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
-    <!-- Vendor Js For This Page Ends-->
-    <!-- build:js -->
     <script src="../assets/js/template.js"></script>
     <script src="../assets/js/dashboard.js"></script>
-    <!-- endbuild -->
+
     <script>
       $('#next-btn').click(function(){
         generatePLO();
