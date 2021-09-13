@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2021 at 09:11 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Sep 13, 2021 at 07:28 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `g4spms`
+-- Database: `codderbuddis`
 --
 
 -- --------------------------------------------------------
@@ -96,7 +96,23 @@ INSERT INTO `assessment` (`id`, `question_number`, `question_content`, `type`, `
 (30, 2, NULL, 'final', 15, NULL, 1, 3),
 (31, 3, NULL, 'final', 15, NULL, 2, 3),
 (32, 4, NULL, 'final', 50, NULL, 3, 3),
-(33, 1, NULL, 'lab', 30, NULL, 4, 3);
+(33, 1, NULL, 'lab', 30, NULL, 4, 3),
+(34, 1, NULL, 'mid', 10, NULL, 1, 5),
+(35, 2, NULL, 'mid', 10, NULL, 2, 5),
+(36, 3, NULL, 'mid', 10, NULL, 4, 5),
+(37, 1, NULL, 'final', 10, NULL, 1, 6),
+(38, 2, NULL, 'final', 10, NULL, 2, 6),
+(39, 3, NULL, 'final', 10, NULL, 4, 6),
+(40, 4, NULL, 'final', 10, NULL, 3, 6),
+(41, 1, NULL, 'mid', 10, NULL, 1, 6),
+(42, 2, NULL, 'mid', 10, NULL, 2, 6),
+(43, 3, NULL, 'mid', 10, NULL, 3, 6),
+(52, 1, NULL, 'mid', 10, NULL, 2, 7),
+(53, 2, NULL, 'mid', 10, NULL, 3, 7),
+(54, 3, NULL, 'mid', 10, NULL, 2, 7),
+(55, 1, NULL, 'mid', 10, NULL, 1, 10),
+(56, 2, NULL, 'mid', 10, NULL, 2, 10),
+(57, 3, NULL, 'mid', 10, NULL, 4, 10);
 
 -- --------------------------------------------------------
 
@@ -142,7 +158,99 @@ INSERT INTO `co` (`id`, `indx`, `name`, `detail`, `plo_id`, `course_id`, `sectio
 (21, 1, NULL, NULL, 2, 'cse-303', 3),
 (22, 2, NULL, NULL, 3, 'cse-303', 3),
 (23, 3, NULL, NULL, 4, 'cse-303', 3),
-(24, 4, NULL, NULL, 6, 'cse-303', 3);
+(24, 4, NULL, NULL, 6, 'cse-303', 3),
+(25, 2, NULL, NULL, 14, 'hrm301', NULL),
+(26, 3, NULL, NULL, 14, 'hrm301', NULL),
+(27, 4, NULL, NULL, 14, 'hrm301', NULL),
+(28, 5, NULL, NULL, 14, 'hrm301', NULL),
+(29, 6, NULL, NULL, 14, 'hrm301', NULL),
+(30, 1, NULL, NULL, 15, 'hrm301', NULL),
+(31, 2, NULL, NULL, 15, 'hrm301', NULL),
+(32, 4, NULL, NULL, 15, 'hrm301', NULL),
+(33, 5, NULL, NULL, 15, 'hrm301', NULL),
+(34, 6, NULL, NULL, 15, 'hrm301', NULL),
+(35, 1, NULL, NULL, 16, 'hrm301', NULL),
+(36, 3, NULL, NULL, 16, 'hrm301', NULL),
+(37, 3, NULL, NULL, 17, 'hrm301', NULL),
+(38, 1, NULL, NULL, 18, 'hrm301', NULL),
+(39, 2, NULL, NULL, 18, 'hrm301', NULL),
+(40, 3, NULL, NULL, 18, 'hrm301', NULL),
+(41, 3, NULL, NULL, 19, 'hrm301', NULL),
+(42, 1, NULL, NULL, 20, 'hrm301', NULL),
+(43, 2, NULL, NULL, 20, 'hrm301', NULL),
+(44, 3, NULL, NULL, 20, 'hrm301', NULL),
+(45, 1, NULL, NULL, 21, 'hrm301', NULL),
+(46, 3, NULL, NULL, 21, 'hrm301', NULL),
+(47, 3, NULL, NULL, 22, 'hrm301', NULL),
+(48, 3, NULL, NULL, 23, 'hrm301', NULL),
+(49, 1, NULL, NULL, 24, 'hrm301', NULL),
+(50, 2, NULL, NULL, 24, 'hrm301', NULL),
+(51, 1, NULL, NULL, 26, 'hrm301', NULL),
+(52, 2, NULL, NULL, 26, 'hrm301', NULL),
+(53, 3, NULL, NULL, 26, 'hrm301', NULL),
+(54, 1, NULL, NULL, 14, 'hrm401', NULL),
+(55, 2, NULL, NULL, 14, 'hrm401', NULL),
+(56, 4, NULL, NULL, 14, 'hrm401', NULL),
+(57, 5, NULL, NULL, 14, 'hrm401', NULL),
+(58, 6, NULL, NULL, 14, 'hrm401', NULL),
+(59, 1, NULL, NULL, 15, 'hrm401', NULL),
+(60, 4, NULL, NULL, 15, 'hrm401', NULL),
+(61, 5, NULL, NULL, 15, 'hrm401', NULL),
+(62, 6, NULL, NULL, 15, 'hrm401', NULL),
+(63, 2, NULL, NULL, 16, 'hrm401', NULL),
+(64, 3, NULL, NULL, 16, 'hrm401', NULL),
+(65, 4, NULL, NULL, 16, 'hrm401', NULL),
+(66, 2, NULL, NULL, 17, 'hrm401', NULL),
+(67, 3, NULL, NULL, 17, 'hrm401', NULL),
+(68, 1, NULL, NULL, 18, 'hrm401', NULL),
+(69, 2, NULL, NULL, 18, 'hrm401', NULL),
+(70, 3, NULL, NULL, 18, 'hrm401', NULL),
+(71, 2, NULL, NULL, 19, 'hrm401', NULL),
+(72, 3, NULL, NULL, 19, 'hrm401', NULL),
+(73, 1, NULL, NULL, 20, 'hrm401', NULL),
+(74, 2, NULL, NULL, 20, 'hrm401', NULL),
+(75, 3, NULL, NULL, 20, 'hrm401', NULL),
+(76, 4, NULL, NULL, 20, 'hrm401', NULL),
+(77, 1, NULL, NULL, 24, 'hrm401', NULL),
+(78, 4, NULL, NULL, 24, 'hrm401', NULL),
+(79, 3, NULL, NULL, 25, 'hrm401', NULL),
+(80, 1, NULL, NULL, 26, 'hrm401', NULL),
+(81, 2, NULL, NULL, 26, 'hrm401', NULL),
+(82, 1, NULL, NULL, 27, 'env101', NULL),
+(83, 2, NULL, NULL, 27, 'env101', NULL),
+(84, 3, NULL, NULL, 27, 'env101', NULL),
+(85, 4, NULL, NULL, 27, 'env101', NULL),
+(86, 1, NULL, NULL, 28, 'env101', NULL),
+(87, 2, NULL, NULL, 28, 'env101', NULL),
+(88, 3, NULL, NULL, 28, 'env101', NULL),
+(89, 4, NULL, NULL, 28, 'env101', NULL),
+(90, 2, NULL, NULL, 29, 'env101', NULL),
+(91, 4, NULL, NULL, 29, 'env101', NULL),
+(92, 2, NULL, NULL, 33, 'env101', NULL),
+(93, 4, NULL, NULL, 33, 'env101', NULL),
+(94, 4, NULL, NULL, 36, 'env101', NULL),
+(95, 1, NULL, NULL, 1, 'cse101', NULL),
+(96, 2, NULL, NULL, 1, 'cse101', NULL),
+(97, 3, NULL, NULL, 1, 'cse101', NULL),
+(98, 4, NULL, NULL, 1, 'cse101', NULL),
+(99, 5, NULL, NULL, 1, 'cse101', NULL),
+(100, 6, NULL, NULL, 1, 'cse101', NULL),
+(101, 1, NULL, NULL, 2, 'cse101', NULL),
+(102, 2, NULL, NULL, 2, 'cse101', NULL),
+(103, 3, NULL, NULL, 2, 'cse101', NULL),
+(104, 4, NULL, NULL, 2, 'cse101', NULL),
+(105, 5, NULL, NULL, 2, 'cse101', NULL),
+(106, 6, NULL, NULL, 2, 'cse101', NULL),
+(107, 2, NULL, NULL, 3, 'cse101', NULL),
+(108, 4, NULL, NULL, 3, 'cse101', NULL),
+(109, 2, NULL, NULL, 7, 'cse101', NULL),
+(110, 4, NULL, NULL, 7, 'cse101', NULL),
+(111, 4, NULL, NULL, 10, 'cse101', NULL),
+(112, 1, NULL, NULL, 1, 'cse101', 7),
+(113, 6, NULL, NULL, 2, 'cse101', 7),
+(114, 2, NULL, NULL, 3, 'cse101', 7),
+(115, 4, NULL, NULL, 7, 'cse101', 7),
+(116, 4, NULL, NULL, 10, 'cse101', 7);
 
 -- --------------------------------------------------------
 
@@ -164,7 +272,11 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`id`, `name`, `credits`, `level`, `total_co`, `program_id`) VALUES
-('cse-303', 'Database Management', 3, 300, 4, 1);
+('cse-303', 'Database Management', 3, 300, 4, 1),
+('cse101', 'Introduction to Programming Language', 4, 100, 6, 1),
+('env101', 'Introduction to Environmental Sciences', 3, 100, 4, 3),
+('hrm301', 'Labor Economics and Compensation Theory', 3, 300, 6, 2),
+('hrm401', 'Human Resource Accounting', 3, 400, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -185,7 +297,9 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`id`, `name`, `head`, `head_id`, `school_id`) VALUES
-('cse', 'Computer Science & Engineering', 'Mr Smith', NULL, 1);
+('cse', 'Computer Science & Engineering', 'Alamin Islam', NULL, 1),
+('env', 'Environmental Science And Management Life Sciences', 'Fahad', NULL, 3),
+('hrm', 'Human Resource Management', 'Mamun Ahmed', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -291,7 +405,206 @@ INSERT INTO `enrollment` (`id`, `student_id`, `section_id`) VALUES
 (85, 1849651, 3),
 (86, 1887973, 3),
 (87, 1877262, 3),
-(88, 1873255, 3);
+(88, 1873255, 3),
+(89, 1528882, 4),
+(90, 1653725, 4),
+(91, 1669953, 4),
+(92, 1616161, 4),
+(93, 1662147, 4),
+(94, 1691483, 4),
+(95, 1674181, 4),
+(96, 1612985, 4),
+(97, 1622731, 4),
+(98, 1678812, 4),
+(99, 1614733, 4),
+(100, 1634352, 4),
+(101, 1729416, 4),
+(102, 1781682, 4),
+(103, 1772947, 4),
+(104, 1752538, 4),
+(105, 1731852, 4),
+(106, 1766176, 4),
+(107, 1742892, 4),
+(108, 1736425, 4),
+(109, 1718437, 4),
+(110, 1737824, 4),
+(111, 1797789, 4),
+(112, 1728139, 4),
+(113, 1898334, 4),
+(114, 1863951, 4),
+(115, 1835298, 4),
+(116, 1849651, 4),
+(117, 1887973, 4),
+(118, 1877262, 4),
+(119, 1873255, 4),
+(120, 1416455, 5),
+(121, 1579288, 5),
+(122, 1625654, 5),
+(123, 1665555, 5),
+(124, 1613273, 5),
+(125, 1623112, 5),
+(126, 1696326, 5),
+(127, 1646434, 5),
+(128, 1614142, 5),
+(129, 1654432, 5),
+(130, 1661638, 5),
+(131, 1686272, 5),
+(132, 1778274, 5),
+(133, 1795656, 5),
+(134, 1747457, 5),
+(135, 1798883, 5),
+(136, 1766156, 5),
+(137, 1715578, 5),
+(138, 1745484, 5),
+(139, 1788337, 5),
+(140, 1728439, 5),
+(141, 1711619, 5),
+(142, 1711729, 5),
+(143, 1892367, 5),
+(144, 1872128, 5),
+(145, 1868128, 5),
+(146, 1845457, 5),
+(147, 1633554, 6),
+(148, 1645333, 6),
+(149, 1691291, 6),
+(150, 1641252, 6),
+(151, 1695837, 6),
+(152, 1668314, 6),
+(153, 1665491, 6),
+(154, 1763881, 6),
+(155, 1773277, 6),
+(156, 1759787, 6),
+(157, 1743714, 6),
+(158, 1728125, 6),
+(159, 1783512, 6),
+(160, 1768463, 6),
+(161, 1797625, 6),
+(162, 1754681, 6),
+(163, 1769463, 6),
+(164, 1731817, 6),
+(165, 1791753, 6),
+(166, 1712983, 6),
+(167, 1784847, 6),
+(168, 1789481, 6),
+(169, 1773384, 6),
+(170, 1762565, 6),
+(171, 1835874, 6),
+(172, 1886577, 6),
+(173, 1834433, 6),
+(174, 1855787, 6),
+(175, 1893863, 6),
+(176, 1842333, 6),
+(177, 1633554, 7),
+(178, 1645333, 7),
+(179, 1691291, 7),
+(180, 1641252, 7),
+(181, 1695837, 7),
+(182, 1668314, 7),
+(183, 1665491, 7),
+(184, 1763881, 7),
+(185, 1773277, 7),
+(186, 1759787, 7),
+(187, 1743714, 7),
+(188, 1728125, 7),
+(189, 1783512, 7),
+(190, 1768463, 7),
+(191, 1797625, 7),
+(192, 1754681, 7),
+(193, 1769463, 7),
+(194, 1731817, 7),
+(195, 1791753, 7),
+(196, 1712983, 7),
+(197, 1784847, 7),
+(198, 1789481, 7),
+(199, 1773384, 7),
+(200, 1762565, 7),
+(201, 1835874, 7),
+(202, 1886577, 7),
+(203, 1834433, 7),
+(204, 1855787, 7),
+(205, 1893863, 7),
+(206, 1842333, 7),
+(207, 1416455, 8),
+(208, 1579288, 8),
+(209, 1625654, 8),
+(210, 1665555, 8),
+(211, 1613273, 8),
+(212, 1623112, 8),
+(213, 1696326, 8),
+(214, 1646434, 8),
+(215, 1614142, 8),
+(216, 1654432, 8),
+(217, 1661638, 8),
+(218, 1686272, 8),
+(219, 1778274, 8),
+(220, 1795656, 8),
+(221, 1747457, 8),
+(222, 1798883, 8),
+(223, 1766156, 8),
+(224, 1715578, 8),
+(225, 1745484, 8),
+(226, 1788337, 8),
+(227, 1728439, 8),
+(228, 1711619, 8),
+(229, 1711729, 8),
+(230, 1892367, 8),
+(231, 1872128, 8),
+(232, 1868128, 8),
+(233, 1845457, 8),
+(234, 1416455, 9),
+(235, 1579288, 9),
+(236, 1625654, 9),
+(237, 1665555, 9),
+(238, 1613273, 9),
+(239, 1623112, 9),
+(240, 1696326, 9),
+(241, 1646434, 9),
+(242, 1614142, 9),
+(243, 1654432, 9),
+(244, 1661638, 9),
+(245, 1686272, 9),
+(246, 1778274, 9),
+(247, 1795656, 9),
+(248, 1747457, 9),
+(249, 1798883, 9),
+(250, 1766156, 9),
+(251, 1715578, 9),
+(252, 1745484, 9),
+(253, 1788337, 9),
+(254, 1728439, 9),
+(255, 1711619, 9),
+(256, 1711729, 9),
+(257, 1892367, 9),
+(258, 1872128, 9),
+(259, 1868128, 9),
+(260, 1845457, 9),
+(261, 1416455, 10),
+(262, 1579288, 10),
+(263, 1625654, 10),
+(264, 1665555, 10),
+(265, 1613273, 10),
+(266, 1623112, 10),
+(267, 1696326, 10),
+(268, 1646434, 10),
+(269, 1614142, 10),
+(270, 1654432, 10),
+(271, 1661638, 10),
+(272, 1686272, 10),
+(273, 1778274, 10),
+(274, 1795656, 10),
+(275, 1747457, 10),
+(276, 1798883, 10),
+(277, 1766156, 10),
+(278, 1715578, 10),
+(279, 1745484, 10),
+(280, 1788337, 10),
+(281, 1728439, 10),
+(282, 1711619, 10),
+(283, 1711729, 10),
+(284, 1892367, 10),
+(285, 1872128, 10),
+(286, 1868128, 10),
+(287, 1845457, 10);
 
 -- --------------------------------------------------------
 
@@ -1279,7 +1592,262 @@ INSERT INTO `evaluation` (`id`, `enrollment_id`, `assessment_id`, `obtained_mark
 (965, 85, 33, 12, NULL),
 (966, 86, 33, 24, NULL),
 (967, 87, 33, 24, NULL),
-(968, 88, 33, 24, NULL);
+(968, 88, 33, 24, NULL),
+(969, 120, 34, 15, NULL),
+(970, 120, 35, 0, NULL),
+(971, 120, 36, 5, NULL),
+(972, 121, 34, 0, NULL),
+(973, 121, 35, 0, NULL),
+(974, 121, 36, 18, NULL),
+(975, 124, 34, 0, NULL),
+(976, 124, 35, 0, NULL),
+(977, 124, 36, 0, NULL),
+(978, 128, 34, 0, NULL),
+(979, 128, 35, 0, NULL),
+(980, 128, 36, 10, NULL),
+(981, 125, 34, 0, NULL),
+(982, 125, 35, 0, NULL),
+(983, 125, 36, 15, NULL),
+(984, 122, 34, 5, NULL),
+(985, 122, 35, 15, NULL),
+(986, 122, 36, 20, NULL),
+(987, 127, 34, 0, NULL),
+(988, 127, 35, 0, NULL),
+(989, 127, 36, 0, NULL),
+(990, 129, 34, 18, NULL),
+(991, 129, 35, 0, NULL),
+(992, 129, 36, 20, NULL),
+(993, 130, 34, 15, NULL),
+(994, 130, 35, 5, NULL),
+(995, 130, 36, 10, NULL),
+(996, 123, 34, 10, NULL),
+(997, 123, 35, 0, NULL),
+(998, 123, 36, 15, NULL),
+(999, 131, 34, 0, NULL),
+(1000, 131, 35, 0, NULL),
+(1001, 131, 36, 0, NULL),
+(1002, 126, 34, 0, NULL),
+(1003, 126, 35, 0, NULL),
+(1004, 126, 36, 10, NULL),
+(1005, 141, 34, 5, NULL),
+(1006, 141, 35, 5, NULL),
+(1007, 141, 36, 22, NULL),
+(1008, 142, 34, 0, NULL),
+(1009, 142, 35, 0, NULL),
+(1010, 142, 36, 0, NULL),
+(1011, 137, 34, 0, NULL),
+(1012, 137, 35, 10, NULL),
+(1013, 137, 36, 10, NULL),
+(1014, 140, 34, 0, NULL),
+(1015, 140, 35, 0, NULL),
+(1016, 140, 36, 24, NULL),
+(1017, 138, 34, 0, NULL),
+(1018, 138, 35, 7, NULL),
+(1019, 138, 36, 0, NULL),
+(1020, 134, 34, 0, NULL),
+(1021, 134, 35, 0, NULL),
+(1022, 134, 36, 0, NULL),
+(1023, 136, 34, 14, NULL),
+(1024, 136, 35, 0, NULL),
+(1025, 136, 36, 20, NULL),
+(1026, 132, 34, 0, NULL),
+(1027, 132, 35, 7, NULL),
+(1028, 132, 36, 15, NULL),
+(1029, 139, 34, 18, NULL),
+(1030, 139, 35, 18, NULL),
+(1031, 139, 36, 24, NULL),
+(1032, 133, 34, 10, NULL),
+(1033, 133, 35, 3, NULL),
+(1034, 133, 36, 20, NULL),
+(1035, 135, 34, 5, NULL),
+(1036, 135, 35, 0, NULL),
+(1037, 135, 36, 15, NULL),
+(1038, 146, 34, 0, NULL),
+(1039, 146, 35, 0, NULL),
+(1040, 146, 36, 20, NULL),
+(1041, 145, 34, 15, NULL),
+(1042, 145, 35, 15, NULL),
+(1043, 145, 36, 24, NULL),
+(1044, 144, 34, 0, NULL),
+(1045, 144, 35, 0, NULL),
+(1046, 144, 36, 22, NULL),
+(1047, 143, 34, 0, NULL),
+(1048, 143, 35, 0, NULL),
+(1049, 143, 36, 24, NULL),
+(1050, 58, 23, 15, NULL),
+(1051, 58, 24, 7, NULL),
+(1052, 58, 25, 0, NULL),
+(1053, 65, 23, 0, NULL),
+(1054, 65, 24, 0, NULL),
+(1055, 65, 25, 22, NULL),
+(1056, 68, 23, 0, NULL),
+(1057, 68, 24, 0, NULL),
+(1058, 68, 25, 0, NULL),
+(1059, 61, 23, 0, NULL),
+(1060, 61, 24, 0, NULL),
+(1061, 61, 25, 18, NULL),
+(1062, 66, 23, 0, NULL),
+(1063, 66, 24, 0, NULL),
+(1064, 66, 25, 0, NULL),
+(1065, 69, 23, 10, NULL),
+(1066, 69, 24, 10, NULL),
+(1067, 69, 25, 15, NULL),
+(1068, 59, 23, 0, NULL),
+(1069, 59, 24, 0, NULL),
+(1070, 59, 25, 0, NULL),
+(1071, 62, 23, 15, NULL),
+(1072, 62, 24, 0, NULL),
+(1073, 62, 25, 0, NULL),
+(1074, 60, 23, 0, NULL),
+(1075, 60, 24, 0, NULL),
+(1076, 60, 25, 5, NULL),
+(1077, 64, 23, 20, NULL),
+(1078, 64, 24, 0, NULL),
+(1079, 64, 25, 5, NULL),
+(1080, 67, 23, 0, NULL),
+(1081, 67, 24, 0, NULL),
+(1082, 67, 25, 0, NULL),
+(1083, 63, 23, 0, NULL),
+(1084, 63, 24, 0, NULL),
+(1085, 63, 25, 20, NULL),
+(1086, 78, 23, 18, NULL),
+(1087, 78, 24, 0, NULL),
+(1088, 78, 25, 22, NULL),
+(1089, 81, 23, 5, NULL),
+(1090, 81, 24, 0, NULL),
+(1091, 81, 25, 10, NULL),
+(1092, 70, 23, 0, NULL),
+(1093, 70, 24, 20, NULL),
+(1094, 70, 25, 18, NULL),
+(1095, 74, 23, 0, NULL),
+(1096, 74, 24, 20, NULL),
+(1097, 74, 25, 0, NULL),
+(1098, 77, 23, 17, NULL),
+(1099, 77, 24, 20, NULL),
+(1100, 77, 25, 22, NULL),
+(1101, 79, 23, 15, NULL),
+(1102, 79, 24, 20, NULL),
+(1103, 79, 25, 22, NULL),
+(1104, 76, 23, 5, NULL),
+(1105, 76, 24, 0, NULL),
+(1106, 76, 25, 5, NULL),
+(1107, 73, 23, 0, NULL),
+(1108, 73, 24, 20, NULL),
+(1109, 73, 25, 0, NULL),
+(1110, 75, 23, 10, NULL),
+(1111, 75, 24, 22, NULL),
+(1112, 75, 25, 18, NULL),
+(1113, 72, 23, 15, NULL),
+(1114, 72, 24, 0, NULL),
+(1115, 72, 25, 27, NULL),
+(1116, 71, 23, 12, NULL),
+(1117, 71, 24, 7, NULL),
+(1118, 71, 25, 0, NULL),
+(1119, 80, 23, 0, NULL),
+(1120, 80, 24, 0, NULL),
+(1121, 80, 25, 15, NULL),
+(1122, 84, 23, 4, NULL),
+(1123, 84, 24, 18, NULL),
+(1124, 84, 25, 20, NULL),
+(1125, 85, 23, 15, NULL),
+(1126, 85, 24, 12, NULL),
+(1127, 85, 25, 22, NULL),
+(1128, 83, 23, 10, NULL),
+(1129, 83, 24, 20, NULL),
+(1130, 83, 25, 15, NULL),
+(1131, 88, 23, 18, NULL),
+(1132, 88, 24, 0, NULL),
+(1133, 88, 25, 22, NULL),
+(1134, 87, 23, 18, NULL),
+(1135, 87, 24, 2, NULL),
+(1136, 87, 25, 22, NULL),
+(1137, 86, 23, 19, NULL),
+(1138, 86, 24, 15, NULL),
+(1139, 86, 25, 0, NULL),
+(1140, 82, 23, 10, NULL),
+(1141, 82, 24, 18, NULL),
+(1142, 82, 25, 0, NULL),
+(1143, 261, 55, 15, NULL),
+(1144, 261, 56, 0, NULL),
+(1145, 261, 57, 5, NULL),
+(1146, 262, 55, 0, NULL),
+(1147, 262, 56, 0, NULL),
+(1148, 262, 57, 18, NULL),
+(1149, 265, 55, 0, NULL),
+(1150, 265, 56, 0, NULL),
+(1151, 265, 57, 0, NULL),
+(1152, 269, 55, 0, NULL),
+(1153, 269, 56, 0, NULL),
+(1154, 269, 57, 10, NULL),
+(1155, 266, 55, 0, NULL),
+(1156, 266, 56, 0, NULL),
+(1157, 266, 57, 15, NULL),
+(1158, 263, 55, 5, NULL),
+(1159, 263, 56, 15, NULL),
+(1160, 263, 57, 20, NULL),
+(1161, 268, 55, 0, NULL),
+(1162, 268, 56, 0, NULL),
+(1163, 268, 57, 0, NULL),
+(1164, 270, 55, 18, NULL),
+(1165, 270, 56, 0, NULL),
+(1166, 270, 57, 20, NULL),
+(1167, 271, 55, 15, NULL),
+(1168, 271, 56, 5, NULL),
+(1169, 271, 57, 10, NULL),
+(1170, 264, 55, 10, NULL),
+(1171, 264, 56, 0, NULL),
+(1172, 264, 57, 15, NULL),
+(1173, 272, 55, 0, NULL),
+(1174, 272, 56, 0, NULL),
+(1175, 272, 57, 0, NULL),
+(1176, 267, 55, 0, NULL),
+(1177, 267, 56, 0, NULL),
+(1178, 267, 57, 10, NULL),
+(1179, 282, 55, 5, NULL),
+(1180, 282, 56, 5, NULL),
+(1181, 282, 57, 22, NULL),
+(1182, 283, 55, 0, NULL),
+(1183, 283, 56, 0, NULL),
+(1184, 283, 57, 0, NULL),
+(1185, 278, 55, 0, NULL),
+(1186, 278, 56, 10, NULL),
+(1187, 278, 57, 10, NULL),
+(1188, 281, 55, 0, NULL),
+(1189, 281, 56, 0, NULL),
+(1190, 281, 57, 24, NULL),
+(1191, 279, 55, 0, NULL),
+(1192, 279, 56, 7, NULL),
+(1193, 279, 57, 0, NULL),
+(1194, 275, 55, 0, NULL),
+(1195, 275, 56, 0, NULL),
+(1196, 275, 57, 0, NULL),
+(1197, 277, 55, 14, NULL),
+(1198, 277, 56, 0, NULL),
+(1199, 277, 57, 20, NULL),
+(1200, 273, 55, 0, NULL),
+(1201, 273, 56, 7, NULL),
+(1202, 273, 57, 15, NULL),
+(1203, 280, 55, 18, NULL),
+(1204, 280, 56, 18, NULL),
+(1205, 280, 57, 24, NULL),
+(1206, 274, 55, 10, NULL),
+(1207, 274, 56, 3, NULL),
+(1208, 274, 57, 20, NULL),
+(1209, 276, 55, 5, NULL),
+(1210, 276, 56, 0, NULL),
+(1211, 276, 57, 15, NULL),
+(1212, 287, 55, 0, NULL),
+(1213, 287, 56, 0, NULL),
+(1214, 287, 57, 20, NULL),
+(1215, 286, 55, 15, NULL),
+(1216, 286, 56, 15, NULL),
+(1217, 286, 57, 24, NULL),
+(1218, 285, 55, 0, NULL),
+(1219, 285, 56, 0, NULL),
+(1220, 285, 57, 22, NULL),
+(1221, 284, 55, 0, NULL),
+(1222, 284, 56, 0, NULL),
+(1223, 284, 57, 24, NULL);
 
 -- --------------------------------------------------------
 
@@ -1300,8 +1868,12 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`id`, `name`, `email`, `password`, `department_id`) VALUES
-(111111, 'Mr John', 'faculty@iub.edu.bd', '12345678', 'cse'),
-(222222, 'Mr Smith', 'faculty2@iub.edu.bd', '12345678', 'cse');
+(3214, 'Tamim Iqbal', 'tamim@iub.edu.bd', '12345678', 'hrm'),
+(3454, 'Alamin Islam', 'alamin@iub.edu.bd', '12345678', 'cse'),
+(5467, 'Rafiq Islam', 'rafiq@iub.edu.bd', '12345678', 'env'),
+(5674, 'Bulbul  Ahmed', 'bulbul@iub.edu.bd', '12345678', 'hrm'),
+(111111, 'Mahbubul Islam', 'mahbubul@iub.edu.bd', '12345678', 'cse'),
+(222222, 'Ashraful Islam', 'ashraful@iub.edu.bd', '12345678', 'cse');
 
 -- --------------------------------------------------------
 
@@ -1334,7 +1906,33 @@ INSERT INTO `plo` (`id`, `indx`, `name`, `details`, `program_id`) VALUES
 (10, 10, 'Communication', NULL, 1),
 (11, 11, 'Self-Motivated', NULL, 1),
 (12, 12, 'Ethics', NULL, 1),
-(13, 13, 'Process Management', NULL, 1);
+(13, 13, 'Process Management', NULL, 1),
+(14, 1, 'Knowledge', NULL, 2),
+(15, 2, 'Requirement Analysis', NULL, 2),
+(16, 3, 'Problem Analysis', NULL, 2),
+(17, 4, 'Design', NULL, 2),
+(18, 5, 'Problem Solving', NULL, 2),
+(19, 6, 'Implementation', NULL, 2),
+(20, 7, 'Experiment and Analysis', NULL, 2),
+(21, 8, 'Community Engagement and Engineering', NULL, 2),
+(22, 9, 'Teamwork', NULL, 2),
+(23, 10, 'Communication', NULL, 2),
+(24, 11, 'Self-Motivated', NULL, 2),
+(25, 12, 'Ethics', NULL, 2),
+(26, 13, 'Process Management', NULL, 2),
+(27, 1, 'Knowledge', NULL, 3),
+(28, 2, 'Requirement Analysis', NULL, 3),
+(29, 3, 'Problem Analysis', NULL, 3),
+(30, 4, 'Design', NULL, 3),
+(31, 5, 'Problem Solving', NULL, 3),
+(32, 6, 'Implementation', NULL, 3),
+(33, 7, 'Experiment and Analysis', NULL, 3),
+(34, 8, 'Community Engagement and Engineering', NULL, 3),
+(35, 9, 'Teamwork', NULL, 3),
+(36, 10, 'Communication', NULL, 3),
+(37, 11, 'Self-Motivated', NULL, 3),
+(38, 12, 'Ethics', NULL, 3),
+(39, 13, 'Process Management', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -1354,7 +1952,9 @@ CREATE TABLE `program` (
 --
 
 INSERT INTO `program` (`id`, `name`, `department_id`, `total_credits`) VALUES
-(1, 'BSc', 'cse', 120);
+(1, 'BSc', 'cse', 120),
+(2, 'BBA', 'hrm', 140),
+(3, 'BES', 'env', 127);
 
 -- --------------------------------------------------------
 
@@ -1375,7 +1975,9 @@ CREATE TABLE `school` (
 --
 
 INSERT INTO `school` (`id`, `name`, `dean`, `dean_id`, `university_id`) VALUES
-(1, 'School of Engineering, Technology & Sciences', 'Mr John', NULL, 'iub');
+(1, 'School of Engineering, Technology & Sciences', 'Mahbubul Islam', NULL, 'iub'),
+(2, 'School of Business And Entrepreneurship', 'Faruk Ahmed', NULL, 'iub'),
+(3, 'School of Environment And Life Sciences', 'Fahim', NULL, 'iub');
 
 -- --------------------------------------------------------
 
@@ -1398,7 +2000,14 @@ CREATE TABLE `section` (
 INSERT INTO `section` (`id`, `num`, `semester`, `course_id`, `faculty_id`) VALUES
 (1, 'A', 'Summer-2021', 'cse-303', 111111),
 (2, 'B', 'Summer-2021', 'cse-303', 111111),
-(3, 'C', 'Summer-2021', 'cse-303', 222222);
+(3, 'C', 'Summer-2021', 'cse-303', 222222),
+(4, 'C', 'Summer-2021', 'hrm301', 3214),
+(5, 'A', 'Summer-2021', 'hrm401', 5674),
+(6, 'C', 'Summer-2021', 'env101', 5467),
+(7, 'C', 'Summer-2021', 'cse101', 222222),
+(8, 'A', 'Summer-2021', 'env101', 5467),
+(9, 'A', 'Summer-2021', 'hrm401', 3214),
+(10, 'A', 'Summer-2021', 'cse-303', 3454);
 
 -- --------------------------------------------------------
 
@@ -1655,49 +2264,49 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `assessment`
 --
 ALTER TABLE `assessment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `co`
 --
 ALTER TABLE `co`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
 
 --
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=969;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1224;
 
 --
 -- AUTO_INCREMENT for table `plo`
 --
 ALTER TABLE `plo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

@@ -18,7 +18,7 @@
     $query = "SELECT COUNT(school.id) as 'total' FROM school";
     $scls = $conn->query($query)->fetch_row()[0];
 
-     $query = "SELECT COUNT(student.id) as 'total' FROM student";
-     $stds = $conn->query($query)->fetch_row()[0];
+    $query = "SELECT COUNT(student.id) as 'total' FROM student";
+    $stds = $conn->query($query)->fetch_row()[0];
    
 ?>

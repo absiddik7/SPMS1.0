@@ -20,7 +20,7 @@
             }else if(($_SESSION['role'])==6){
                 if(preg_match("/dean/i", $_SERVER['REQUEST_URI']) || preg_match("/faculty/i", $_SERVER['REQUEST_URI'])){
                 }else{
-                    header("Location: $link/faculty/");
+                    header("Location: $link/dean/");
                 }
             }else if(($_SESSION['role'])==4){
                 if(preg_match("/head/i", $_SERVER['REQUEST_URI']) || preg_match("/faculty/i", $_SERVER['REQUEST_URI'])){
