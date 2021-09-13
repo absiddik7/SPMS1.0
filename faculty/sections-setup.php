@@ -17,7 +17,7 @@
 
   </head>
   <body class="header-fixed">
-    <!-- partial:partials/_header.html -->
+    
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
         <a href="index.html">
@@ -34,9 +34,9 @@
         </div>
       </div>
     </nav>
-    <!-- partial -->
+    
     <div class="page-body">
-      <!-- partial:partials/_sidebar.html -->
+      
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar">
@@ -65,12 +65,7 @@
               <i class="mdi mdi-clipboard link-icon"></i>
             </a>
           </li>
-          <!-- <li>
-            <a href="reports.html">
-              <span class="link-title">Reports</span>
-              <i class="mdi mdi-chart-areaspline link-icon"></i>
-            </a>
-          </li> -->
+       
           <li>
             <a style="font-size:medium;"  href="question-banks.php">
               <span class="link-title">Question Bank</span>
@@ -128,8 +123,7 @@
             </div>
           </div>
         </div>
-        <!-- content viewport ends -->
-        <!-- partial:partials/_footer.html -->
+       
         <footer class="footer">
           <div class="row">
             <div class="col-sm-6 text-center text-sm-right order-sm-1">
@@ -143,25 +137,21 @@
             </div>
           </div>
         </footer>
-        <!-- partial -->
+        
       </div>
-      <!-- page content ends -->
+     
     </div>
-    <!--page body ends -->
-    <!-- SCRIPT LOADING START FORM HERE /////////////-->
-    <!-- plugins:js -->
+   
     <script src="../assets/vendors/js/core.js"></script>
-    <!-- endinject -->
-    <!-- Vendor Js For This Page Ends-->
+  
     <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
     <script src="../assets/vendors/js/vendor.addons.js"></script>
     <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="../assets/vendors/datatables/jquery.dataTables.js"></script>
-    <!-- Vendor Js For This Page Ends-->
-    <!-- build:js -->
+   
     <script src="../assets/js/template.js"></script>
     <script src="../assets/js/dashboard.js"></script>
-    <!-- endbuild -->
+    
     <script>
       $(document).ready(function() {
           $('#user-table').DataTable();
